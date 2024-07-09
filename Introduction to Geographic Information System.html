@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ryan P. Dela Cruz">
+
+<title>An Introduction to Geographic Information System</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="Introduction to Geographic Information System_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Introduction to Geographic Information System_files/libs/quarto-html/quarto.js"></script>
+<script src="Introduction to Geographic Information System_files/libs/quarto-html/popper.min.js"></script>
+<script src="Introduction to Geographic Information System_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Introduction to Geographic Information System_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Introduction to Geographic Information System_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Introduction to Geographic Information System_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Introduction to Geographic Information System_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Introduction to Geographic Information System_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Introduction to Geographic Information System_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#module-1-overview-of-the-basic-concept-of-geographic-information-system." id="toc-module-1-overview-of-the-basic-concept-of-geographic-information-system." class="nav-link active" data-scroll-target="#module-1-overview-of-the-basic-concept-of-geographic-information-system."><span class="header-section-number">1</span> MODULE 1: Overview of the basic concept of Geographic Information System.</a>
+  <ul class="collapse">
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">1.1</span> Objectives:</a></li>
+  <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes"><span class="header-section-number">1.2</span> Outcomes:</a></li>
+  <li><a href="#definition-of-terms" id="toc-definition-of-terms" class="nav-link" data-scroll-target="#definition-of-terms"><span class="header-section-number">1.3</span> Definition of Terms</a></li>
+  <li><a href="#basic-gis-concept" id="toc-basic-gis-concept" class="nav-link" data-scroll-target="#basic-gis-concept"><span class="header-section-number">1.4</span> Basic GIS Concept</a>
+  <ul class="collapse">
+  <li><a href="#what-is-geographic-information-system-gis" id="toc-what-is-geographic-information-system-gis" class="nav-link" data-scroll-target="#what-is-geographic-information-system-gis"><span class="header-section-number">1.4.1</span> What is Geographic Information System (GIS)</a></li>
+  <li><a href="#comparison-between-gis-and-mapping" id="toc-comparison-between-gis-and-mapping" class="nav-link" data-scroll-target="#comparison-between-gis-and-mapping"><span class="header-section-number">1.4.2</span> Comparison between GIS and Mapping</a></li>
+  <li><a href="#gis-as-a-system" id="toc-gis-as-a-system" class="nav-link" data-scroll-target="#gis-as-a-system"><span class="header-section-number">1.4.3</span> GIS as a System</a></li>
+  <li><a href="#the-concept-of-geospatial-data" id="toc-the-concept-of-geospatial-data" class="nav-link" data-scroll-target="#the-concept-of-geospatial-data"><span class="header-section-number">1.4.4</span> The Concept of Geospatial Data</a></li>
+  <li><a href="#gis-data-models" id="toc-gis-data-models" class="nav-link" data-scroll-target="#gis-data-models"><span class="header-section-number">1.4.5</span> GIS Data Models</a></li>
+  <li><a href="#the-shapefile" id="toc-the-shapefile" class="nav-link" data-scroll-target="#the-shapefile"><span class="header-section-number">1.4.6</span> The Shapefile</a></li>
+  <li><a href="#file-formats-for-vector-and-raster" id="toc-file-formats-for-vector-and-raster" class="nav-link" data-scroll-target="#file-formats-for-vector-and-raster"><span class="header-section-number">1.4.7</span> File formats for Vector and Raster</a></li>
+  <li><a href="#examples-of-vector-and-raster" id="toc-examples-of-vector-and-raster" class="nav-link" data-scroll-target="#examples-of-vector-and-raster"><span class="header-section-number">1.4.8</span> Examples of Vector and Raster</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="header-section-number">1.4.9</span> Attributes</a></li>
+  <li><a href="#coordinate-reference-system-crs" id="toc-coordinate-reference-system-crs" class="nav-link" data-scroll-target="#coordinate-reference-system-crs"><span class="header-section-number">1.4.10</span> Coordinate Reference System (CRS)</a></li>
+  <li><a href="#types-of-coordinate-reference-systems-crs" id="toc-types-of-coordinate-reference-systems-crs" class="nav-link" data-scroll-target="#types-of-coordinate-reference-systems-crs"><span class="header-section-number">1.4.11</span> Types of Coordinate Reference Systems (CRS)</a></li>
+  <li><a href="#the-geographic-coordinate-systems-gcs" id="toc-the-geographic-coordinate-systems-gcs" class="nav-link" data-scroll-target="#the-geographic-coordinate-systems-gcs"><span class="header-section-number">1.4.12</span> <strong>The Geographic Coordinate Systems (GCS)</strong></a></li>
+  <li><a href="#projected-coordinate-systems" id="toc-projected-coordinate-systems" class="nav-link" data-scroll-target="#projected-coordinate-systems"><span class="header-section-number">1.4.13</span> Projected Coordinate Systems</a></li>
+  <li><a href="#geographic-datum-transformations" id="toc-geographic-datum-transformations" class="nav-link" data-scroll-target="#geographic-datum-transformations"><span class="header-section-number">1.4.14</span> Geographic (datum) transformations</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#module-2-introduction-to-qgis-installation-user-interface-and-plugins" id="toc-module-2-introduction-to-qgis-installation-user-interface-and-plugins" class="nav-link" data-scroll-target="#module-2-introduction-to-qgis-installation-user-interface-and-plugins"><span class="header-section-number">2</span> MODULE 2: INTRODUCTION TO QGIS (Installation, User-Interface, and Plugins)</a>
+  <ul class="collapse">
+  <li><a href="#objectives-1" id="toc-objectives-1" class="nav-link" data-scroll-target="#objectives-1"><span class="header-section-number">2.0.1</span> Objectives:</a></li>
+  <li><a href="#outcomes-1" id="toc-outcomes-1" class="nav-link" data-scroll-target="#outcomes-1"><span class="header-section-number">2.0.2</span> Outcomes:</a></li>
+  <li><a href="#overview-of-the-qgis-software" id="toc-overview-of-the-qgis-software" class="nav-link" data-scroll-target="#overview-of-the-qgis-software"><span class="header-section-number">2.1</span> Overview of the QGIS Software</a>
+  <ul class="collapse">
+  <li><a href="#what-is-qgis" id="toc-what-is-qgis" class="nav-link" data-scroll-target="#what-is-qgis"><span class="header-section-number">2.1.1</span> What is QGIS?</a></li>
+  <li><a href="#qgis-applications" id="toc-qgis-applications" class="nav-link" data-scroll-target="#qgis-applications"><span class="header-section-number">2.1.2</span> QGIS Applications</a></li>
+  <li><a href="#software-installation" id="toc-software-installation" class="nav-link" data-scroll-target="#software-installation"><span class="header-section-number">2.1.3</span> Software Installation</a></li>
+  <li><a href="#qgis-graphical-user-interface-gui" id="toc-qgis-graphical-user-interface-gui" class="nav-link" data-scroll-target="#qgis-graphical-user-interface-gui"><span class="header-section-number">2.1.4</span> QGIS Graphical User Interface (GUI)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#module-3-loading-different-data-models-into-qgis" id="toc-module-3-loading-different-data-models-into-qgis" class="nav-link" data-scroll-target="#module-3-loading-different-data-models-into-qgis"><span class="header-section-number">3</span> MODULE 3: LOADING DIFFERENT DATA MODELS INTO QGIS</a>
+  <ul class="collapse">
+  <li><a href="#objectives-2" id="toc-objectives-2" class="nav-link" data-scroll-target="#objectives-2"><span class="header-section-number">3.0.1</span> Objectives:</a></li>
+  <li><a href="#outcomes-2" id="toc-outcomes-2" class="nav-link" data-scroll-target="#outcomes-2"><span class="header-section-number">3.0.2</span> Outcomes:</a></li>
+  <li><a href="#loading-vector-layers" id="toc-loading-vector-layers" class="nav-link" data-scroll-target="#loading-vector-layers"><span class="header-section-number">3.1</span> Loading Vector Layers</a>
+  <ul class="collapse">
+  <li><a href="#loading-a-.-csv-file" id="toc-loading-a-.-csv-file" class="nav-link" data-scroll-target="#loading-a-.-csv-file"><span class="header-section-number">3.1.1</span> Loading a . csv file</a></li>
+  <li><a href="#loading-a-shapefile" id="toc-loading-a-shapefile" class="nav-link" data-scroll-target="#loading-a-shapefile"><span class="header-section-number">3.1.2</span> Loading a shapefile</a></li>
+  <li><a href="#loading-raster-data" id="toc-loading-raster-data" class="nav-link" data-scroll-target="#loading-raster-data"><span class="header-section-number">3.1.3</span> Loading Raster data</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#module-4-vector-analysis-buffer-clip-intersection" id="toc-module-4-vector-analysis-buffer-clip-intersection" class="nav-link" data-scroll-target="#module-4-vector-analysis-buffer-clip-intersection"><span class="header-section-number">4</span> MODULE 4: VECTOR ANALYSIS (Buffer, Clip &amp; Intersection)</a>
+  <ul class="collapse">
+  <li><a href="#objectives-3" id="toc-objectives-3" class="nav-link" data-scroll-target="#objectives-3"><span class="header-section-number">4.0.1</span> Objectives:</a></li>
+  <li><a href="#outcomes-3" id="toc-outcomes-3" class="nav-link" data-scroll-target="#outcomes-3"><span class="header-section-number">4.0.2</span> Outcomes:</a></li>
+  <li><a href="#buffer" id="toc-buffer" class="nav-link" data-scroll-target="#buffer"><span class="header-section-number">4.0.3</span> Buffer</a></li>
+  <li><a href="#clip" id="toc-clip" class="nav-link" data-scroll-target="#clip"><span class="header-section-number">4.0.4</span> Clip</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.1</span> References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Introduction-to-Geographic-Information-System.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">An Introduction to Geographic Information System</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryan P. Dela Cruz </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="module-1-overview-of-the-basic-concept-of-geographic-information-system." class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> MODULE 1: Overview of the basic concept of Geographic Information System.</h1>
+<section id="objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">1.1</span> Objectives:</h2>
+<p>This module enables the students to:</p>
+<ol type="1">
+<li><p>Possess knowledge of the basic GIS concepts;</p></li>
+<li><p>Gain knowledge about GIS data models and structures and;</p></li>
+<li><p>Understand the Coordinate reference systems (CRS).</p></li>
+</ol>
+</section>
+<section id="outcomes" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="outcomes"><span class="header-section-number">1.2</span> Outcomes:</h2>
+<p>After reading this module, students should be able to:</p>
+<ol type="1">
+<li><p>Define what is GIS;</p></li>
+<li><p>Differentiate vector from raster;</p></li>
+<li><p>Familiarized with the common Coordinate Reference Systems (CRS)</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="definition-of-terms" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="definition-of-terms"><span class="header-section-number">1.3</span> Definition of Terms</h2>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="basic-gis-concept" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="basic-gis-concept"><span class="header-section-number">1.4</span> Basic GIS Concept</h2>
+<p>This module aims to provide a discussion about basic Geographic Information System (GIS). The discussions about GIS in this module are not comprehensive and are intended for beginner students. Further readings and resources are provided at the end of this module for students who wish to learn more about the science and art of GIS.</p>
+<p>Through the years, the improvement and development of computers has revolutionized map making. This revolution helped cartographers to shift from tedious hand-drawn maps to digital maps. GIS allows anyone to visualize spatial data in space and in an interactive manner.</p>
+<p><em>Geography</em> is a core and essential element at the heart of GIS. By definition, it means the study of locational and spatial variation in both physical and human phenomena on earth<span class="citation" data-cites="Balasubramanian">(<a href="#ref-Balasubramanian" role="doc-biblioref">Balasubramanian 2014</a>)</span>. In other words, one cannot fully grasp or implement GIS without considering the principles and concepts of geography.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Reminder:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the context of GIS, geography refers to the spatial relationships and characteristics of features on the Earth’s surface.</p>
+</div>
+</div>
+<p>By utilizing GIS, it is possible to incorporate a geographical aspect to any data by linking it to specific locations. This is accomplished through techniques such as Geo-tagging and Geo-referencing. Data or information that is tied to a specific location is referred to as <strong><em>geospatial</em></strong>.</p>
+<section id="what-is-geographic-information-system-gis" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="what-is-geographic-information-system-gis"><span class="header-section-number">1.4.1</span> What is Geographic Information System (GIS)</h3>
+<p>GIS is a computer-based system that is designed to capture, manipulate, analyze, manage, retrieve, and display all types of geographically reference data.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep in Mind:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>The keywords are: Computer-based, System, and geographically-referenced.</code></p>
+</div>
+</div>
+<p>The primary function of GIS is not just to create maps but also to display data in a spatially explicit manner. This enables users to identify emerging patterns and gain a better understanding of phenomena.</p>
+</section>
+<section id="comparison-between-gis-and-mapping" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="comparison-between-gis-and-mapping"><span class="header-section-number">1.4.2</span> Comparison between GIS and Mapping</h3>
+<p>GIS is often associated with maps, but it is important to understand that it encompasses much more than just mapping. While maps are a way to display data in a spatially explicit manner, GIS is a broader concept that includes many different applications. In fact, GIS is an umbrella term that refers to a variety of tools and techniques used to analyze, manage, and visualize geospatial data.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep in mind:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="line-block">GIS is not equivalent to <strong><em>“Mapping”</em></strong><br>
+GIS is ” <strong><em>Mapping plus more</em></strong>”</div>
+</div>
+</div>
+</section>
+<section id="gis-as-a-system" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="gis-as-a-system"><span class="header-section-number">1.4.3</span> GIS as a System</h3>
+<p>GIS may appear as a single entity, but it is actually a system consisting of a collection of components working together to perform a particular function. As a system, GIS comprises various elements connected and integrated in a cohesive manner. Like any other system, GIS is composed of numerous components, including but not restricted to:</p>
+<table class="caption-top table">
+<caption>Common Components of a GIS</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li>Computer</li>
+</ul></td>
+<td><ul>
+<li>Hardware</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><ul>
+<li>Software</li>
+</ul></td>
+<td><ul>
+<li>Procedures and methods</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><ul>
+<li>Data</li>
+</ul></td>
+<td><ul>
+<li>People</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Note:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GIS as a system is a complex network of organized and interconnected elements which includes the following: a.) Physical (hardware, people, print maps) b.) Intangible (methods, procedures, digital data).</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pictures/GIS%20as%20a%20system.png" class="img-fluid figure-img" style="width:8.1cm"></p>
+<figcaption>GIS as a System</figcaption>
+</figure>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="the-concept-of-geospatial-data" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="the-concept-of-geospatial-data"><span class="header-section-number">1.4.4</span> The Concept of Geospatial Data</h3>
+<p>Geospatial data refers to any data that has a location component and can be displayed digitally.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Note:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The prefix <strong>“Geo”</strong> suggests <strong>“Earth”</strong> while <strong>“Spatial”</strong> comes from the root word <strong>“Space”</strong>. The term <strong>“Features”</strong> is also sometimes used to refer to the vector type of GIS.</p>
+</div>
+</div>
+<p>In geospatial data, anything occurring on, above, or below the Earth’s surface is included. The term is often used interchangeably with spatial data or GIS data.</p>
+<table class="caption-top table">
+<caption>Interchangeable Terms</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><ul>
+<li>Spatial Data</li>
+</ul></th>
+<th><ul>
+<li>Geospatial Data</li>
+</ul></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li>Geographic Data</li>
+</ul></td>
+<td><ul>
+<li>GIS Data</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><ul>
+<li>Vector Data</li>
+</ul></td>
+<td><ul>
+<li>Feature Data</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gis-data-models" class="level3" data-number="1.4.5">
+<h3 data-number="1.4.5" class="anchored" data-anchor-id="gis-data-models"><span class="header-section-number">1.4.5</span> GIS Data Models</h3>
+<p>There are two general types of data in GIS these are <strong>“Vector”</strong> and <strong>“Raster”</strong>.</p>
+<section id="raster" class="level4" data-number="1.4.5.1">
+<h4 data-number="1.4.5.1" class="anchored" data-anchor-id="raster"><span class="header-section-number">1.4.5.1</span> Raster</h4>
+<p>The raster data model, along with the vector data model, is one of the earliest and most widely used data models within geographic information systems <span class="citation" data-cites="Tomlin">(<a href="#ref-Tomlin" role="doc-biblioref">Tomlin 1990</a>)</span>. &nbsp;It is typically used to record, analyze, and visualize data with a continuous nature such as elevation, temperature, or reflected or emitted electromagnetic radiation. The term raster originated from the German word for <strong><em>screen</em></strong>, implying a series of orthogonally oriented parallel lines.</p>
+</section>
+<section id="pixels-and-resolution" class="level4" data-number="1.4.5.2">
+<h4 data-number="1.4.5.2" class="anchored" data-anchor-id="pixels-and-resolution"><span class="header-section-number">1.4.5.2</span> Pixels and Resolution</h4>
+<p>Each tiny square of information in a digital image is called a <strong><em>Pixel</em></strong>. These Pixels, or “cells,” are responsible for representing features on, above, or below the earth’s surface. Unlike vectors, rasters are resolution-dependent. This means that the quality of the data is influenced by the size and number of Pixels used to cover a fixed unit area.</p>
+<p>When you zoom-in very closely on a digital image, the amount of detail you see is determined by the size of the Pixels. The resolution is dictated by the pixel size expressed in ground units, as determined by the Coordinate Reference System (CRS).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Tips:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“<strong>Picture Element</strong>” or “<strong>Pixel</strong>” is the smallest unit of information in a raster.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pictures/Resolution.png" class="img-fluid figure-img"></p>
+<figcaption>A Digital Elevation Model (DEM) at 30 m (left) , 10 cm (center), and 3.3 m resolution (right) <span class="citation" data-cites="Pingel">Pingel (<a href="#ref-Pingel" role="doc-biblioref">2018</a>)</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="vector" class="level4" data-number="1.4.5.3">
+<h4 data-number="1.4.5.3" class="anchored" data-anchor-id="vector"><span class="header-section-number">1.4.5.3</span> Vector</h4>
+<p>Vector data models represent spatial features using points and their associated X, Y coordinate pairs, similar to a hand-drawn map. There are three types of vector data these are Points, Lines, and Polygons.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://saylordotorg.github.io/text_essentials-of-geographic-information-systems/section_08/5e0adb92da29fb258470bfeb5265cc55.jpg" class="img-fluid figure-img" width="370"></p>
+<figcaption>Points, Lines, and Polygon <span class="citation" data-cites="summer">Sumer, Sumer, and Atasever (<a href="#ref-summer" role="doc-biblioref">2015</a>)</span></figcaption>
+</figure>
+</div>
+<dl>
+<dt>Points</dt>
+<dd>
+<p>A zero-dimensional object containing a single coordinate pair. In a GIS, points have only the property of location.</p>
+</dd>
+<dt>Lines</dt>
+<dd>
+<p>&nbsp;are one-dimensional features composed of multiple, explicitly connected points. Lines are used to represent linear features such as roads, streams, faults, boundaries, and so forth.</p>
+</dd>
+<dt>Polygon</dt>
+<dd>
+<p>are two-dimensional features created by multiple lines that loop back to create a “closed” feature. In the case of polygons, the first coordinate pair (point) on the first line segment is the same as the last coordinate pair on the last line segment.</p>
+</dd>
+</dl>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pictures/Points,polygon%20and%20LInes.png" class="img-fluid figure-img"></p>
+<figcaption>Points Polygon and Lines in GIS <span class="citation" data-cites="gitconnectedGeographicMicroservice">(<a href="#ref-gitconnectedGeographicMicroservice" role="doc-biblioref"><strong>gitconnectedGeographicMicroservice?</strong></a>)</span></figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Reminder:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The appropriate type of vector to use depends on the objector entity of interest.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pictures/Shapefile.png" class="img-fluid figure-img" width="577"></p>
+<figcaption>Shapefile has the same name but a different file extension.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="the-shapefile" class="level3" data-number="1.4.6">
+<h3 data-number="1.4.6" class="anchored" data-anchor-id="the-shapefile"><span class="header-section-number">1.4.6</span> The Shapefile</h3>
+<p>It is the most common supported vector file format. Despite the name, this is not a single file but a group of files sharing the same name but with different file extensions.</p>
+<table class="caption-top table">
+<caption>The file extension and its description</caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.shp</td>
+<td><ul>
+<li>The main file. it could be either a point, line, or polygon.</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>.prj</td>
+<td><ul>
+<li>Contains the coordinate reference system.</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>.dbf</td>
+<td><ul>
+<li>The Excel file that holds the attribute data of the feature.</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>.shx</td>
+<td><ul>
+<li>The shape index makes it possible for users to seek backward in the shapefile.</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>.qml</td>
+<td><ul>
+<li>Customized layer style such as line color/thickness, color fill, etc.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="file-formats-for-vector-and-raster" class="level3" data-number="1.4.7">
+<h3 data-number="1.4.7" class="anchored" data-anchor-id="file-formats-for-vector-and-raster"><span class="header-section-number">1.4.7</span> File formats for Vector and Raster</h3>
+<p>Digital files come in various file formats, which can be identified by the suffixes following the “dot” (e.g.&nbsp;*.tiff). In the field of Geographic Information Systems (GIS), the following file types are the most common and widely accepted. The formats written in bold letters are the most popular file types used in GIS.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GIS Data Model</th>
+<th>Common file format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Raster</td>
+<td><ul>
+<li>Arc/Info ASCII Grid</li>
+<li>Arc/Info Binary Grid (.adf)</li>
+<li>Windows Bitmap (.bmp)</li>
+<li>Graphic Interchange Format(.gif)</li>
+<li>TIFF/BigTIFF/GeoTIFF(.tif)</li>
+<li>ERDAS Image (.img)</li>
+<li>JPG, JFIF (.jpg)</li>
+<li>JPEG2000 (.jp2,.j2k)</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Vector</td>
+<td><ul>
+<li>AutoCAD (.dwg)</li>
+<li>MapInfo TAB Format - *TAB, *.DATA, ID and MAP files</li>
+<li>Keyhole Markup Language (.KML)</li>
+<li>ESRI Shapefile (.shp), Shapefile (.shp)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Note:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>KML is a file that can be created, visualized, and edited using Google Earth application. SHP is the standard format for vector files and can be opened and read by almost any GIS software.</p>
+</div>
+</div>
+</section>
+<section id="examples-of-vector-and-raster" class="level3" data-number="1.4.8">
+<h3 data-number="1.4.8" class="anchored" data-anchor-id="examples-of-vector-and-raster"><span class="header-section-number">1.4.8</span> Examples of Vector and Raster</h3>
+<p>Below are some of the examples of vector and raster data. Note that this is not a comprehensive list.</p>
+<table class="caption-top table">
+<caption>Examples of Vector and Raster</caption>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 35%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Model</th>
+<th>Examples</th>
+<th>Sample Products</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Raster</td>
+<td><ul>
+<li><p>Satallite Images</p></li>
+<li><p>Scanned maps</p></li>
+<li><p>Arial Photograp</p></li>
+<li><p>Digital elevation model</p></li>
+<li><p>Digital Terrain Model</p></li>
+<li><p>Digital Surface Model</p></li>
+</ul></td>
+<td><ul>
+<li>Landsat 4,5,7,7 (30m)</li>
+<li>IKONOS images (2m)</li>
+<li>NAMRIA</li>
+<li>Arial Capture from Drone</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Vector</td>
+<td><ul>
+<li><p>Shapefiles</p></li>
+<li><p>KML</p></li>
+<li><p>AutoCAD (DWG)</p></li>
+</ul></td>
+<td><ul>
+<li>Downloadable SHP from gadm.org</li>
+<li>Google earth file</li>
+<li>Schetch plans</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes" class="level3" data-number="1.4.9">
+<h3 data-number="1.4.9" class="anchored" data-anchor-id="attributes"><span class="header-section-number">1.4.9</span> Attributes</h3>
+<p>Every data, especially vector data, has an associated attribute table that holds information about that data. These could most easily be understood if the data is considered as a spreadsheet with one row per feature and one column.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Tips:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Columns are also called <strong>Fields</strong></p></li>
+<li><p>Rows are also called <strong>Data/Records</strong></p></li>
+</ul>
+</div>
+</div>
+<p>Vector data is usually linked with attributes, which can be modified by adding or removing fields, requiring the definition of their data type. The attribute’s type will vary depending on the values expected to be stored in the cells of that field.</p>
+<p>Rows are added when a feature or polygon is drawn from the QGIS map area.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pictures/Attribute%20Table.png" class="img-fluid figure-img"></p>
+<figcaption>Attribute Table</figcaption>
+</figure>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="coordinate-reference-system-crs" class="level3" data-number="1.4.10">
+<h3 data-number="1.4.10" class="anchored" data-anchor-id="coordinate-reference-system-crs"><span class="header-section-number">1.4.10</span> Coordinate Reference System (CRS)</h3>
+<p>Do you still remember the Cartesian Coordinate System? This system allows us to locate the position of any point in space relative to an origin, which is the intersection of two perpendicular lines.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartisian.png" class="img-fluid figure-img" width="276"></p>
+<figcaption>Sample of point plotting on a cartesian plane <span class="citation" data-cites="Russell">Russel (<a href="#ref-Russell" role="doc-biblioref">2019</a>)</span></figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Tips:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The principles of the Cartesian Coordinate System is the same principle used in locating places on earth.</p>
+</div>
+</div>
+<p>Any point on earth’s surface can be represented by longitude and latitude instead of <strong>X</strong> and <strong>Y</strong> axes. The longtitude and latitude divided the earth vertically and horizontally in such a way that any given point could be NorthSouth or WestEast. Any point is relative to the Longtitude-Latitude intersection, which is the zero-degree Longtitude (<strong>Prime Meridian)</strong> and zero-degree Latitude (Equator).</p>
+</section>
+<section id="types-of-coordinate-reference-systems-crs" class="level3" data-number="1.4.11">
+<h3 data-number="1.4.11" class="anchored" data-anchor-id="types-of-coordinate-reference-systems-crs"><span class="header-section-number">1.4.11</span> Types of Coordinate Reference Systems (CRS)</h3>
+<p>There are two most commonly used coordinated reference systems in GIS. The Geographic Coordinate Systems (GCS) and the Projected coordinate systems (PCS). These two CRS display GIS data differently on a computer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/crs.png" class="img-fluid figure-img" width="617"></p>
+<figcaption>GCS vs PCS <span class="citation" data-cites="Buttery">Buttery (<a href="#ref-Buttery" role="doc-biblioref">2022</a>)</span></figcaption>
+</figure>
+</div>
+<div style="page-break-after: always;"></div>
+<p>The CRS, or Coordinate Reference System, is responsible for determining the units of measurement in a map, whether it’s angular or linear. It also impacts the ability of map layers to overlay with one another. As a general rule, all data sets should have the same CRS to ensure proper alignment of the layers.</p>
+</section>
+<section id="the-geographic-coordinate-systems-gcs" class="level3" data-number="1.4.12">
+<h3 data-number="1.4.12" class="anchored" data-anchor-id="the-geographic-coordinate-systems-gcs"><span class="header-section-number">1.4.12</span> <strong>The Geographic Coordinate Systems (GCS)</strong></h3>
+<p>The GCS uses the longitude latitude system and uses three-dimensional spherical surface to find locations and points since positions are based on angular distances everything is measured in degree units.</p>
+<p>A location on Earth is defined by its coordinates, known as longitude and latitude. These coordinates are angles that originate from the Earth’s center and extend to a specific point on the planet’s surface. Typically, these angles are quantified in degrees or grads.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-52633125.png" class="img-fluid figure-img"></p>
+<figcaption>An illustration showing the world as a globe with longitude and latitude values</figcaption>
+</figure>
+</div>
+<p>Within the spherical coordinate system, the horizontal or east-west running lines represent parallels, which are lines of constant latitude. Conversely, the vertical or north-south running lines signify meridians, which are lines of constant longitude. Together, these lines wrap around the Earth, creating a grid-like pattern known as a graticule.</p>
+<p>The equator is the central line of latitude, equidistant from both poles, and is designated as the zero latitude line. The prime meridian, which is the zero longitude line, typically runs through Greenwich, England in most Geographic Coordinate Systems (GCSs). The point where the equator and the prime meridian intersect is known as the graticule’s origin, with coordinates (0,0).</p>
+<p>Latitude and longitude coordinates are conventionally expressed in decimal degrees or as degrees, minutes, and seconds (DMS). Latitudes are gauged from the equator, extending from -90° at the South Pole to +90° at the North Pole. Longitudes, on the other hand, are gauged from the prime meridian, spanning from -180° westward to 180° eastward. For instance, given that the prime meridian crosses Greenwich, England, Australia’s position—south of the equator and east of Greenwich—results in positive longitude and negative latitude values.</p>
+<p>Thinking of longitude as the ‘x’ value and latitude as the ‘y’ can be useful. When data is plotted on a geographic coordinate system, it’s treated as though each degree is a fixed unit of measurement, akin to the Plate Carrée projection. It’s important to note that a single physical location may be represented by different coordinate values across various geographic coordinate systems.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are at least three ways to express GCS:</p>
+<ul>
+<li><p>Degrees-Minutes-Seconds</p></li>
+<li><p>Decimal minutes</p></li>
+<li><p>Decimal degrees</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="projected-coordinate-systems" class="level3" data-number="1.4.13">
+<h3 data-number="1.4.13" class="anchored" data-anchor-id="projected-coordinate-systems"><span class="header-section-number">1.4.13</span> Projected Coordinate Systems</h3>
+<p>A <strong>Projected Coordinate System (PCS)</strong> is established on a plane, which is a flat, two-dimensional surface. In contrast to a <strong>Geographic Coordinate System (GCS)</strong>, a PCS maintains consistent lengths, angles, and areas throughout its two dimensions. A PCS invariably relies on an underlying GCS, which itself is derived from a spherical or spheroidal shape. Beyond the GCS, a PCS encompasses a map projection, which is further tailored for specific locations through a collection of projection parameters, and it also specifies a linear unit for measurement.</p>
+</section>
+<section id="geographic-datum-transformations" class="level3" data-number="1.4.14">
+<h3 data-number="1.4.14" class="anchored" data-anchor-id="geographic-datum-transformations"><span class="header-section-number">1.4.14</span> Geographic (datum) transformations</h3>
+<p>When dealing with two datasets that are aligned to different geographic coordinate systems, a geographic (datum) transformation may be necessary. This transformation is a precise mathematical process used to translate coordinates from one geographic coordinate system to another. Much like the coordinate systems themselves, there is an extensive array of predefined geographic transformations available for use. It’s crucial to apply the correct geographic transformation when required, as failure to do so can result in coordinates being misplaced by as much as several hundred meters. In cases where a direct transformation is not available, it may be necessary to employ an intermediary GCS, such as the World Geodetic System 1984 (WGS84), and perform a combination of two transformations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3509347157.png" class="img-fluid figure-img"></p>
+<figcaption>Projected</figcaption>
+</figure>
+</div>
+<p><strong>“Easting”</strong> refers to the measure of how far east a point is from the origin within a coordinate system, quantified in the units of that system. It corresponds to the <strong>x-value</strong> in a rectangular coordinate system. <strong>“Northing,”</strong> on the other hand, denotes the measure of how far north a point is from the origin, also measured in the system’s units, aligning with the <strong>y-value</strong> in a rectangular coordinate system.</p>
+<p>The world is divided into <strong>60 longitudinal projection zones</strong>, which are sequentially numbered from <strong>1 to 60</strong>, beginning at <strong>180°W</strong>. Each zone spans <strong>6 degrees</strong> in width, with certain exceptions in regions like Norway and Svalbard where the zones differ in width.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-533678345.png" class="img-fluid figure-img"></p>
+<figcaption>The Universal Traverse Mercator World Map <span class="citation" data-cites="Buttery">Buttery (<a href="#ref-Buttery" role="doc-biblioref">2022</a>)</span></figcaption>
+</figure>
+</div>
+<p><strong>Comparison between PCS and GCS</strong></p>
+<p>A GCS is round, and so records locations in angular units (usually degrees). A PCS is flat, so it records locations in linear units (usually meters).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3601100940.png" class="img-fluid figure-img"></p>
+<figcaption>Comparison between PCS and GCS</figcaption>
+</figure>
+</div>
+<p>Once your dataset is prepared to be depicted, it must determine the method of portrayal. The dilemma arises from the discrepancy between the spherical nature of the Earth’s surface—and consequently, your <strong>Geographic Coordinate System (GCS)</strong>—and the planar characteristics of your map and computer display. Transferring the Earth’s curvature onto a flat medium inevitably leads to distortion. It’s akin to attempting to flatten an orange peel on a table; it nearly works, but not without some tearing. This is where the utility of map projections is evident. They provide instructions on how to manipulate the Earth’s representation—how to strategically tear and stretch that orange peel—so that the most crucial aspects of your map suffer minimal distortion and are optimally represented on the map’s flat plane.</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+</section>
+<section id="module-2-introduction-to-qgis-installation-user-interface-and-plugins" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> MODULE 2: INTRODUCTION TO QGIS (Installation, User-Interface, and Plugins)</h1>
+<section id="objectives-1" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="objectives-1"><span class="header-section-number">2.0.1</span> Objectives:</h3>
+<p>This module enables the students to :</p>
+<ol type="1">
+<li><p>Have an overview on what is QGIS and ,</p></li>
+<li><p>Familiarize its user interface.</p></li>
+</ol>
+</section>
+<section id="outcomes-1" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="outcomes-1"><span class="header-section-number">2.0.2</span> Outcomes:</h3>
+<p>After reading and following the steps and procedure in this module, the students should be able to:</p>
+<ol type="1">
+<li><p>Install QGIS in their computer successfully,</p></li>
+<li><p>Familiarized its user interface, able to identify useful geoprocessing icons and,</p></li>
+<li><p>Install plug-ins.</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+<p><strong>Definition of terms</strong></p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="overview-of-the-qgis-software" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="overview-of-the-qgis-software"><span class="header-section-number">2.1</span> Overview of the QGIS Software</h2>
+<section id="what-is-qgis" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="what-is-qgis"><span class="header-section-number">2.1.1</span> What is QGIS?</h3>
+<p>QGIS is a sophisticated GIS application that not only stands on the shoulders of Free and Open Source Software (FOSS) but also takes pride in being part of the FOSS community.</p>
+<p>QGIS is an accessible and open-source Geographic Information System (GIS), licensed under the GNU General Public License. As an esteemed project of the Open Source Geo-spatial Foundation (OSGeo), it operates across various platforms including Linux, Unix, Mac OSX, Windows, and Android, and accommodates a wide array of vector, raster, and database formats and capabilities.</p>
+</section>
+<section id="qgis-applications" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="qgis-applications"><span class="header-section-number">2.1.2</span> QGIS Applications</h3>
+<p>QGIS is not only a desktop GIS. It can also be used for spatial file browser, a server application, and web applications. Below are some of the applications of QGIS.</p>
+<table class="caption-top table">
+<caption>QGIS Applications <span class="citation" data-cites="qgisApplications"><span>“QGIS Application”</span></span></caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>QGIS Desktop</td>
+<td><p>Create, edit, visualise, analyse and publish geospatial information.</p>
+<p>For Windows, Mac, Linux, BSD and Android.</p></td>
+</tr>
+<tr class="even">
+<td>QGIS Server</td>
+<td>Publish QGIS projects and layers as OGC compatible WMS, WMTS, WFS and WCS services. Control which layers, attributes, layouts and coordinate systems are exported. QGIS server is considered as a reference implementation for WMS 1.3.</td>
+</tr>
+<tr class="odd">
+<td>QGIS Web Client</td>
+<td>Publish QGIS projects on the web with ease. Benefit from the powerful symbology, labeling and blending features to impress with your maps.</td>
+</tr>
+<tr class="even">
+<td>QGIS on mobiles and tablets</td>
+<td>The QGIS experience does not stop on the desktop. Various third-party touch optimized apps allow you to take QGIS into the field</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="software-installation" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="software-installation"><span class="header-section-number">2.1.3</span> Software Installation</h3>
+<p>The following steps shows you how to install QGIS into your computer. In order to install the QGIS software you need to download the software first.</p>
+<p><strong>Step 1.</strong> In your internet browser type <a href="https://qgis.org/en/site/index.html" class="uri">https://qgis.org/en/site/index.html</a> in the search bar. The official website of QGIS will appear.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1858100542.png" class="img-fluid figure-img"></p>
+<figcaption>QGIS official Website</figcaption>
+</figure>
+</div>
+<p><strong>Step 2.</strong> In the web page, you can see two buttons the <img src="images/clipboard-1395801283.png" width="68" height="16"> and <img src="images/clipboard-3969769840.png" width="68" height="16">. You can also observe that under the <img src="images/clipboard-2291666506.png" width="68" height="17"> are two versions the Release Candidate (RC) and the Long term release (LTR). Click the <img src="images/clipboard-2291666506.png" width="64" height="16"> to proceed to the download page.</p>
+<p><img src="images/clipboard-2831037054.png" class="img-fluid" width="449"></p>
+<div style="page-break-after: always;"></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Release Candidate (RC)</strong> is the latest version of QGIS that is being tested and can be used. The only disadvantage of this version is that it is prone to Bugs and frequent Crash. While <strong>Long Term Release (LTR)</strong> is usually older version of the software that is more stable that the release candidate.</p>
+</div>
+</div>
+<p><strong>Step 3.</strong> The download page will appear showing a large download button. Click the <img src="images/clipboard-1735610055.png" width="111" height="16"> link below the button since it is better to download the long term release version of the software.</p>
+<p><img src="images/clipboard-4114477350.png" class="img-fluid"></p>
+<p><strong>Step 4.</strong> A dialog box will appear asking you where to put the downloaded file. Choose a folder then click <img src="images/clipboard-1243437957.png" width="68" height="20"> button to download the software. Wait until the software is downloaded. This may take some time depending on the size of the file being downloaded and how fast your internet connectivity.</p>
+<p><img src="images/clipboard-1393592318.png" class="img-fluid"></p>
+<p><strong>Step 5.</strong> Double click the file that you have downloaded and a dialog box will appear. Click <img src="images/clipboard-3596519019.png" width="68" height="22"> and another dialog box will appear. Just click <img src="images/clipboard-1523705276.png" width="68" height="19"> and tick the <img src="images/clipboard-907523451.png" class="img-fluid" width="233"> lastly , hit <img src="images/clipboard-2886290235.png" class="img-fluid">. Wait Until the software is successfully installed.</p>
+<p><img src="images/clipboard-3962353116.png" class="img-fluid" width="333"></p>
+<p><img src="images/clipboard-2177331036.png" class="img-fluid" width="335"></p>
+</section>
+<section id="qgis-graphical-user-interface-gui" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="qgis-graphical-user-interface-gui"><span class="header-section-number">2.1.4</span> QGIS Graphical User Interface (GUI)</h3>
+<p>After installing the software, click the windows icon ( <img src="images/clipboard-3229500925.png" class="img-fluid" width="17"> windows icon) and look for the recently installed application or type QGIS Desktop 3.34.8 on search bar (<img src="images/clipboard-645037302.png" width="173" height="28"> search bar ).</p>
+<p><strong>Step 1.</strong> Click <img src="images/clipboard-1333348490.png" class="img-fluid" width="123"> to open the software. The QGIS interface will show up showing your recent project if you have already used it but usually this will be blank if you are using it for the first time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%202024-07-07%20210344.png" class="img-fluid figure-img" width="561"></p>
+<figcaption>QGIS user interface</figcaption>
+</figure>
+</div>
+<p><strong>Step 2.</strong> Press <strong><code>Ctrl + N</code></strong> to start a new project or Click the <img src="images/clipboard-4226328116.png" class="img-fluid"> <img src="images/clipboard-1334164282.png" class="img-fluid"> icon. A new untitled project was just created.</p>
+<p><img src="images/Screenshot%202024-07-10%20033251.jpg" class="img-fluid"></p>
+<table class="caption-top table">
+<caption>QGIS GUI Components and their description</caption>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ol type="1">
+<li>Menu Bar</li>
+</ol></td>
+<td>The Menu bar provides access to QGIS functions using standard hierarchical menus.</td>
+</tr>
+<tr class="even">
+<td><ol start="2" type="1">
+<li>Toolbar</li>
+</ol></td>
+<td>The toolbars provide access to most of the functions in the menus, plus additional tools for interacting with the map.</td>
+</tr>
+<tr class="odd">
+<td><ol start="3" type="1">
+<li>Panels</li>
+</ol></td>
+<td>QGIS provides many panels. Panels are special widgets that you can interact with (selecting options, checking boxes, filling values…) to perform more complex tasks.</td>
+</tr>
+<tr class="even">
+<td><ol start="4" type="1">
+<li>Map View</li>
+</ol></td>
+<td>The map view provide visualization of the layers being loaded into the QGIS.</td>
+</tr>
+<tr class="odd">
+<td><ol start="5" type="1">
+<li>Status Bar</li>
+</ol></td>
+<td>The status bar provides you with general information about the map view and processed or available actions, and offers you tools to manage the map view.</td>
+</tr>
+</tbody>
+</table>
+<p>A more detailed information on each of the component can be access from the official website of <a href="https://docs.qgis.org/3.34/en/docs/user_manual/introduction/qgis_gui.html#">QGIS.</a></p>
+</section>
+</section>
+</section>
+<section id="module-3-loading-different-data-models-into-qgis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> MODULE 3: LOADING DIFFERENT DATA MODELS INTO QGIS</h1>
+<section id="objectives-2" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="objectives-2"><span class="header-section-number">3.0.1</span> Objectives:</h3>
+<p>This Module enables the students to:</p>
+<ol type="1">
+<li><p>Differentiate different data models,</p></li>
+<li><p>Load different data into QGIS.</p></li>
+</ol>
+</section>
+<section id="outcomes-2" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="outcomes-2"><span class="header-section-number">3.0.2</span> Outcomes:</h3>
+<p>After reading and following the steps and procedure in this module, the students should be able to:</p>
+<ol type="1">
+<li><p>Gain knowledge about the different data models,</p></li>
+<li><p>Confidently load different data models into QGIS.</p></li>
+</ol>
+</section>
+<section id="loading-vector-layers" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="loading-vector-layers"><span class="header-section-number">3.1</span> Loading Vector Layers</h2>
+<p>The data to be use for this exercise can be downloaded <a href="https://drive.google.com/drive/folders/15k58nhDnTo8yu-jBT9v4gbH_6GIxsViY?usp=sharing">here</a>.</p>
+<section id="loading-a-.-csv-file" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="loading-a-.-csv-file"><span class="header-section-number">3.1.1</span> Loading a . csv file</h3>
+<p>A .csv file stands for <strong>comma-separated values</strong> file. It’s a simple and widely used format for storing tabular data in plain text. Each piece of data in the file is separated by a comma (,). This makes it easy for computer programs to read and understand the data.</p>
+<p>The following steps will guide you on how to load .csv files into QGIS.</p>
+<p><strong>Step 1.</strong> Open you QGIS software and on the <code>Manage layers Toolbars</code> Click <img src="images/clipboard-145553620.png" class="img-fluid"> Add delimited text icon or Press <code>CTRL + SHIFT + T</code>.</p>
+<p><img src="images/clipboard-2494265405.png" class="img-fluid"></p>
+<p><strong>Step 2.</strong> On the right of the <code>File name</code> textbox there is a button with three dots, Click <img src="images/clipboard-4040124874.png" class="img-fluid"> to browse for the location of your .csv file.</p>
+<p><img src="images/clipboard-3448995069.png" class="img-fluid"></p>
+<p><strong>Step 3.</strong> In your Mapping data set folder, Left Click on <code>Site Coodrinate1</code> and click <code>Open.</code> Your .csv file data will be loaded.</p>
+<p><img src="images/clipboard-4243377563.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your X and Y fields will automatically load the longitude and latitude data from your csv file. But there are instances that it does not load properly. You need to set it manually.</p>
+</div>
+</div>
+<p><strong>Step 4.</strong> Since your data is in Degrees Minutes Seconds, this will give you a hint that your csv file CRS is Geographic Coordinate format. Under the X and Y field check the <img src="images/clipboard-3216887613.png" class="img-fluid"> and Set the <code>Geometry CRS</code> to <code>EPSG: 4326-WGS 84</code> .</p>
+<p><img src="images/clipboard-1672848513.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your <code>Geometry CRS</code> should be the same as your Project CRS to display the data properly.</p>
+<p><img src="images/clipboard-1672848513.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2538007078.png" class="img-fluid"></p>
+</div>
+</div>
+<p><strong>Step 5.</strong> Click <img src="images/clipboard-4248020980.png" class="img-fluid"> button and hit <img src="images/clipboard-3903698265.png" class="img-fluid">. Your csv data should be loaded as points in the Map frame and will appear on the Layers Panel.</p>
+<p><img src="images/clipboard-261373783.png" class="img-fluid"></p>
+</section>
+<section id="loading-a-shapefile" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="loading-a-shapefile"><span class="header-section-number">3.1.2</span> Loading a shapefile</h3>
+<p>A we have discuss in the previous module, shapefile is not a single file but rather composed of a group of files sharing the same name but with different file extensions.</p>
+<p>The following steps will show you how to load shapefiles into QGIS.</p>
+<p><strong>Step 1.</strong> In the <code>Manage layer toolbar</code>, Click <img src="images/clipboard-462579616.png" class="img-fluid"> add vector layer icon or press <code>CTRL + SHIFT + V</code> and</p>
+<p>a dialog box will appear.</p>
+<p><img src="images/clipboard-2722997328.png" class="img-fluid"></p>
+<p><strong>Step 2.</strong> Click the <img src="images/clipboard-4201397893.png" class="img-fluid"> browse button to look for your mapping data set folder.</p>
+<p><img src="images/clipboard-3665316965.png" class="img-fluid"></p>
+<p><strong>Step 3.</strong> In your data set, Click <code>River lines.shp</code> only and hit <code>Open.</code></p>
+<p><img src="images/clipboard-3965750980.png" class="img-fluid"></p>
+<p><strong>Step 4.</strong> After loading your shapefile hit <img src="images/clipboard-1038718991.png" class="img-fluid"> then <img src="images/clipboard-3244265577.png" class="img-fluid"> the dialog box. Your <code>River lines</code> Will now be added to the <code>Layers Pannel.</code></p>
+<p><img src="images/clipboard-169011094.png" class="img-fluid"></p>
+</section>
+<section id="loading-raster-data" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="loading-raster-data"><span class="header-section-number">3.1.3</span> Loading Raster data</h3>
+<p>One of the most common raster data being use for geospatial analysis is the Digital Elevation Model (DEM). A digital elevation model (DEM) is essentially a 3D computer representation of Earth’s (or any celestial body’s) surface, focusing on elevation.</p>
+<p>The following steps will guide you on how to load raster specifically DEM to QGIS.</p>
+<p><strong>Step 1.</strong> In the <code>Manage Layers Toolbar</code> Click the <img src="images/clipboard-3882131285.png" class="img-fluid"> add raster icon or press <code>CTRL + SHIFT + R</code>.</p>
+<p><img src="images/clipboard-3463207333.png" class="img-fluid"></p>
+<p><strong>Step 2.</strong> Click the <img src="images/clipboard-1271662103.png" class="img-fluid"> browse button, and select and open the e the <code>DEM.tif</code> file.</p>
+<p><img src="images/clipboard-2015866256.png" class="img-fluid"></p>
+<p>Step 3. Hit <img src="images/clipboard-4159016390.png" class="img-fluid"> then <img src="images/clipboard-3739708011.png" class="img-fluid"> the dialog box. Your DEM data is now loaded in the layers panel and in the map frame.</p>
+<p><img src="images/clipboard-3702934924.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="module-4-vector-analysis-buffer-clip-intersection" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> MODULE 4: VECTOR ANALYSIS (Buffer, Clip &amp; Intersection)</h1>
+<section id="objectives-3" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="objectives-3"><span class="header-section-number">4.0.1</span> Objectives:</h3>
+<p>This module enables the students to :</p>
+<ol type="1">
+<li><p>Understand vector analysis using the QGIS geoprocessing tools.</p></li>
+<li><p>Perform Vector analysis using geoprocesing tools.</p></li>
+</ol>
+</section>
+<section id="outcomes-3" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="outcomes-3"><span class="header-section-number">4.0.2</span> Outcomes:</h3>
+<p>After reading and following the steps and procedure in this module, the students should be able to:</p>
+<ol type="1">
+<li><p>Create a buffer zone,</p></li>
+<li><p>Clip a River lines with Municipal boundary and;</p></li>
+<li><p>Intersect Raininduce landslide with Municipal boundary.</p></li>
+</ol>
+</section>
+<section id="buffer" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="buffer"><span class="header-section-number">4.0.3</span> Buffer</h3>
+<p>In this exercise, we will learn how to use the buffer tool in QGIS.</p>
+<p>When <strong>buffering</strong>, two areas are created: a <strong>buffer zone</strong> within a specified distance to selected real-world features and an <strong>area beyond it</strong>.</p>
+<p>A <strong>buffer zone</strong> is a designated area that exists to maintain distance between different real-world features. These zones can serve a variety of purposes, such as protecting the environment, shielding residential and commercial areas from industrial accidents or natural disasters, or preventing violence. Examples of buffer zones include greenbelts that separate residential and commercial areas, border zones between countries, noise protection zones around airports, and pollution protection zones along rivers.</p>
+<p>Suppose we are tasked to evaluate an existing sanitary landfill and below is a table showing some of the criteria for evaluation based on <a href="https://www.bing.com/ck/a?!&amp;&amp;p=32ad13002047ffbfJmltdHM9MTcwNDY3MjAwMCZpZ3VpZD0xYTBkOTFhMi1hYzlhLTY3NjMtMjNhMy04MmI2YWQ4ZTY2ZWQmaW5zaWQ9NTI0Mw&amp;ptn=3&amp;ver=2&amp;hsh=3&amp;fclid=1a0d91a2-ac9a-6763-23a3-82b6ad8e66ed&amp;psq=guidelines+for+sanitary+landfill+operation&amp;u=a1aHR0cHM6Ly9lbWIuZ292LnBoL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE1LzEyL0RBTy0xOTk4LTUwLnBkZg&amp;ntb=F">DAO 1998-50</a>. We only take two example criteria to show how the buffer tool is used for the evaluation of landfill site identification and screening criteria for municipal solid waste disposal facilities.</p>
+<p><strong>Some definition of terms</strong></p>
+<p><strong><em>Absolute criteria</em></strong> - this sets the minimum requirement(s) that a site must meet for it to be considered.</p>
+<p><strong>Conditional criteria</strong> - this indicates that a certain site has met the absolute Conditions/requirements but is still subject to or dependent upon certain additional conditions that can Enhance the site selection process but are not exclusionary.</p>
+<p><img src="images/clipboard-351452462.png" class="img-fluid"></p>
+<p>As we can see on the first criteria, we need to locate the proposed residential, commercial, or urban development areas, and areas with archeological, cultural, and historical areas. On the second criterion, we need to locate surface waters used for drinking purposes and perennial rivers or streams and of course the location of the existing sanitary landfill. We can obtain these data by <a href="https://drive.google.com/file/d/1lhZH8RROZ4VhU4HPD1I4vrHvgliCXoHN/view?usp=sharing">digitizing</a> the map.</p>
+<p>We will also assume that you have already finished digitizing so that we can now proceed to the validation process using the buffer tool. Download the needed data <a href="https://drive.google.com/drive/folders/1bl5hdJpI2Z9-FB0w6hHxVIPPw2bp3OFW?usp=sharing">here</a>.</p>
+<p>After loading the data within QGIS, we are now ready to evaluate the given criteria. The first criterion says that the landfill should not be located in the proximity of sensitive land users. We can see on the map that the sanitary landfill is situated where there are no built-up areas thus meeting the minimum requirements. However, the conditional states that it should not be within 250 meters of residential and 1 kilometer of memorial sites, churches, schools, and historical sites. To validate this, we will create a 1-kilometer radius buffer zone within the sanitary landfill to see whether there are built-up areas affected.</p>
+<p>To create a buffer, follow these steps.</p>
+<p><strong>Step 1.</strong> In the menu bar, select <code>Vector ---&gt; Geoprocessing tools ---&gt; Buffer.</code></p>
+<p><img src="images/clipboard-587342247.png" class="img-fluid"></p>
+<p>Step 2. A dialog will appear showing the parameters need to perform the operation.</p>
+<p><img src="images/clipboard-1500670733.png" class="img-fluid"></p>
+<p><strong>Step 3.</strong> On the dialog box, select “Sanitary Landfill” as the Input <em>Layer</em>. On the <em>Distance</em> change the meters into <em>Kilometers</em> and the distance value to 1. Leave other values the same and click <strong>Run</strong>.</p>
+<p><img src="images/clipboard-1182246697.png" class="img-fluid"></p>
+<p><strong>Step 4.</strong> A circle will appear around the sanitary landfill. Change the symbology of the buffer zone. Make the fill color to transparent and change the border color into red then increase the stroke width to 0.460000 Click <strong>OK</strong>.</p>
+<p><img src="images/clipboard-474177572.png" class="img-fluid"></p>
+<p><strong>Step 5.</strong> The result shows that there were no built-up areas within the 1-kilometer buffer zone. This means that it passed the first given criteria.</p>
+<p><img src="images/clipboard-108232627.png" class="img-fluid"></p>
+</section>
+<section id="clip" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="clip"><span class="header-section-number">4.0.4</span> Clip</h3>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="references" class="level2 unnumbered" data-number="4.1">
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4.1 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Balasubramanian" class="csl-entry" role="listitem">
+Balasubramanian, A. 2014. <span>“BRANCHES OF GEOGRAPHY.”</span> <a href="https://doi.org/10.13140/RG.2.2.26553.57445">https://doi.org/10.13140/RG.2.2.26553.57445</a>.
+</div>
+<div id="ref-Buttery" class="csl-entry" role="listitem">
+Buttery, Jhon. 2022. <span>“<span>T</span>he <span>D</span>ifference <span>B</span>etween <span>G</span>eographic and <span>P</span>rojection <span>C</span>oordinate <span>S</span>ystems? — Linkedin.com.”</span> <a href="https://www.linkedin.com/pulse/difference-between-geographic-projection-coordinate-systems-buttery/" class="uri">https://www.linkedin.com/pulse/difference-between-geographic-projection-coordinate-systems-buttery/</a>.
+</div>
+<div id="ref-Pingel" class="csl-entry" role="listitem">
+Pingel, Thomas. 2018. <span>“The Raster Data Model.”</span> <em>Geographic Information Science &amp; Technology Body of Knowledge</em>. <a href="https://doi.org/10.22224/gistbok/2018.3.11">https://doi.org/10.22224/gistbok/2018.3.11</a>.
+</div>
+<div id="ref-qgisApplications" class="csl-entry" role="listitem">
+<span>“QGIS Application.”</span> <a href="https://qgis.org/en/site/about/features.html" class="uri">https://qgis.org/en/site/about/features.html</a>.
+</div>
+<div id="ref-Russell" class="csl-entry" role="listitem">
+Russel, Dub. 2019. <span>“<span>W</span>hat <span>I</span>s a <span>C</span>artesian <span>P</span>lane? — Thoughtco.com.”</span> <a href="https://www.thoughtco.com/cartesian-plane-coordinate-plane-2312339" class="uri">https://www.thoughtco.com/cartesian-plane-coordinate-plane-2312339</a>.
+</div>
+<div id="ref-summer" class="csl-entry" role="listitem">
+Sumer, Selay, Emre Sumer, and Hilal Atasever. 2015. <span>“Promoting Development Through a Geographic Information System-Based Lodging Property Query System (LPQS) for Antalya, Turkey.”</span> <em>Information Development</em>. <a href="https://doi.org/10.1177/0266666915587033">https://doi.org/10.1177/0266666915587033</a>.
+</div>
+<div id="ref-Tomlin" class="csl-entry" role="listitem">
+Tomlin, C. Dana. 1990. <span>“<a href="">Geographic Information Systems and Cartographic Modeling</a>.”</span>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

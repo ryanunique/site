@@ -1,0 +1,652 @@
+---
+title: "An Introduction to Geographic Information System"
+bibliography: citation.bib
+author: "Ryan P. Dela Cruz"
+chapters:
+  - index.qmd
+  - intro.qmd
+  - summary.qmd
+  - references.qmd
+toc: true
+number-sections: true
+highlight-style: pygments
+format: 
+  html: 
+    theme: cosmo
+  pdf:
+    geometry: 
+      - top = 20mm
+      - left = 30mm
+      - right =15mm
+      - bottom = 30mm
+  
+
+editor: visual
+---
+
+# MODULE 1: Overview of the basic concept of Geographic Information System.
+
+## Objectives:
+
+This module enables the students to:
+
+1.  Possess knowledge of the basic GIS concepts;
+
+2.  Gain knowledge about GIS data models and structures and;
+
+3.  Understand the Coordinate reference systems (CRS).
+
+## Outcomes:
+
+After reading this module, students should be able to:
+
+1.  Define what is GIS;
+
+2.  Differentiate vector from raster;
+
+3.  Familiarized with the common Coordinate Reference Systems (CRS)
+
+{{< pagebreak >}}
+
+## Definition of Terms
+
+{{< pagebreak >}}
+
+## Basic GIS Concept
+
+This module aims to provide a discussion about basic Geographic Information System (GIS). The discussions about GIS in this module are not comprehensive and are intended for beginner students. Further readings and resources are provided at the end of this module for students who wish to learn more about the science and art of GIS.
+
+Through the years, the improvement and development of computers has revolutionized map making. This revolution helped cartographers to shift from tedious hand-drawn maps to digital maps. GIS allows anyone to visualize spatial data in space and in an interactive manner.
+
+*Geography* is a core and essential element at the heart of GIS. By definition, it means the study of locational and spatial variation in both physical and human phenomena on earth[@Balasubramanian]. In other words, one cannot fully grasp or implement GIS without considering the principles and concepts of geography.
+
+::: callout-note
+## Important Reminder:
+
+In the context of GIS, geography refers to the spatial relationships and characteristics of features on the Earth's surface.
+:::
+
+By utilizing GIS, it is possible to incorporate a geographical aspect to any data by linking it to specific locations. This is accomplished through techniques such as Geo-tagging and Geo-referencing. Data or information that is tied to a specific location is referred to as ***geospatial***.
+
+### What is Geographic Information System (GIS)
+
+GIS is a computer-based system that is designed to capture, manipulate, analyze, manage, retrieve, and display all types of geographically reference data.
+
+::: callout-important
+## Keep in Mind:
+
+`The keywords are: Computer-based, System, and geographically-referenced.`
+:::
+
+The primary function of GIS is not just to create maps but also to display data in a spatially explicit manner. This enables users to identify emerging patterns and gain a better understanding of phenomena.
+
+### Comparison between GIS and Mapping
+
+GIS is often associated with maps, but it is important to understand that it encompasses much more than just mapping. While maps are a way to display data in a spatially explicit manner, GIS is a broader concept that includes many different applications. In fact, GIS is an umbrella term that refers to a variety of tools and techniques used to analyze, manage, and visualize geospatial data.
+
+::: callout-important
+## Keep in mind:
+
+| GIS is not equivalent to ***"Mapping"***
+| GIS is " ***Mapping plus more***"
+:::
+
+### GIS as a System
+
+GIS may appear as a single entity, but it is actually a system consisting of a collection of components working together to perform a particular function. As a system, GIS comprises various elements connected and integrated in a cohesive manner. Like any other system, GIS is composed of numerous components, including but not restricted to:
+
++---------------+----------------------------+
+| -   Computer  | -   Hardware               |
++---------------+----------------------------+
+| -   Software  | -   Procedures and methods |
++---------------+----------------------------+
+| -   Data      | -   People                 |
++---------------+----------------------------+
+
+: Common Components of a GIS
+
+::: callout-note
+## Important Note:
+
+GIS as a system is a complex network of organized and interconnected elements which includes the following: a.) Physical (hardware, people, print maps) b.) Intangible (methods, procedures, digital data).
+:::
+
+![GIS as a System](Pictures/GIS%20as%20a%20system.png){fig-align="center" width="8.1cm"}
+
+{{< pagebreak >}}
+
+### The Concept of Geospatial Data
+
+Geospatial data refers to any data that has a location component and can be displayed digitally.
+
+::: callout-important
+## Important Note:
+
+The prefix **"Geo"** suggests **"Earth"** while **"Spatial"** comes from the root word **"Space"**. The term **"Features"** is also sometimes used to refer to the vector type of GIS.
+:::
+
+In geospatial data, anything occurring on, above, or below the Earth's surface is included. The term is often used interchangeably with spatial data or GIS data.
+
++---------------------+---------------------+
+| -   Spatial Data    | -   Geospatial Data |
++=====================+=====================+
+| -   Geographic Data | -   GIS Data        |
++---------------------+---------------------+
+| -   Vector Data     | -   Feature Data    |
++---------------------+---------------------+
+
+: Interchangeable Terms
+
+### GIS Data Models
+
+There are two general types of data in GIS these are **"Vector"** and **"Raster"**.
+
+#### Raster
+
+The raster data model, along with the vector data model, is one of the earliest and most widely used data models within geographic information systems [@Tomlin].  It is typically used to record, analyze, and visualize data with a continuous nature such as elevation, temperature, or reflected or emitted electromagnetic radiation. The term raster originated from the German word for ***screen***, implying a series of orthogonally oriented parallel lines.
+
+#### Pixels and Resolution
+
+Each tiny square of information in a digital image is called a ***Pixel***. These Pixels, or "cells," are responsible for representing features on, above, or below the earth's surface. Unlike vectors, rasters are resolution-dependent. This means that the quality of the data is influenced by the size and number of Pixels used to cover a fixed unit area.
+
+When you zoom-in very closely on a digital image, the amount of detail you see is determined by the size of the Pixels. The resolution is dictated by the pixel size expressed in ground units, as determined by the Coordinate Reference System (CRS).
+
+::: callout-tip
+## Important Tips:
+
+"**Picture Element**" or "**Pixel**" is the smallest unit of information in a raster.
+:::
+
+![A Digital Elevation Model (DEM) at 30 m (left) , 10 cm (center), and 3.3 m resolution (right) @Pingel](Pictures/Resolution.png)
+
+#### Vector
+
+Vector data models represent spatial features using points and their associated X, Y coordinate pairs, similar to a hand-drawn map. There are three types of vector data these are Points, Lines, and Polygons.
+
+![Points, Lines, and Polygon @summer](https://saylordotorg.github.io/text_essentials-of-geographic-information-systems/section_08/5e0adb92da29fb258470bfeb5265cc55.jpg){width="370"}
+
+Points
+
+:   A zero-dimensional object containing a single coordinate pair. In a GIS, points have only the property of location.
+
+Lines
+
+:    are one-dimensional features composed of multiple, explicitly connected points. Lines are used to represent linear features such as roads, streams, faults, boundaries, and so forth.
+
+Polygon
+
+:   are two-dimensional features created by multiple lines that loop back to create a "closed" feature. In the case of polygons, the first coordinate pair (point) on the first line segment is the same as the last coordinate pair on the last line segment.
+
+![Points Polygon and Lines in GIS @gitconnectedGeographicMicroservice](Pictures/Points,polygon%20and%20LInes.png)
+
+::: callout-important
+## Important Reminder:
+
+The appropriate type of vector to use depends on the objector entity of interest.
+:::
+
+![Shapefile has the same name but a different file extension.](Pictures/Shapefile.png){width="577"}
+
+### The Shapefile
+
+It is the most common supported vector file format. Despite the name, this is not a single file but a group of files sharing the same name but with different file extensions.
+
++-------------+------------------------------------------------------------------------------------+
+| File format | Description                                                                        |
++=============+====================================================================================+
+| .shp        | -   The main file. it could be either a point, line, or polygon.                   |
++-------------+------------------------------------------------------------------------------------+
+| .prj        | -   Contains the coordinate reference system.                                      |
++-------------+------------------------------------------------------------------------------------+
+| .dbf        | -   The Excel file that holds the attribute data of the feature.                   |
++-------------+------------------------------------------------------------------------------------+
+| .shx        | -   The shape index makes it possible for users to seek backward in the shapefile. |
++-------------+------------------------------------------------------------------------------------+
+| .qml        | -   Customized layer style such as line color/thickness, color fill, etc.          |
++-------------+------------------------------------------------------------------------------------+
+
+: The file extension and its description
+
+### File formats for Vector and Raster
+
+Digital files come in various file formats, which can be identified by the suffixes following the "dot" (e.g. \*.tiff). In the field of Geographic Information Systems (GIS), the following file types are the most common and widely accepted. The formats written in bold letters are the most popular file types used in GIS.
+
++----------------+-----------------------------------------------------------+
+| GIS Data Model | Common file format                                        |
++================+===========================================================+
+| Raster         | -   Arc/Info ASCII Grid                                   |
+|                | -   Arc/Info Binary Grid (.adf)                           |
+|                | -   Windows Bitmap (.bmp)                                 |
+|                | -   Graphic Interchange Format(.gif)                      |
+|                | -   TIFF/BigTIFF/GeoTIFF(.tif)                            |
+|                | -   ERDAS Image (.img)                                    |
+|                | -   JPG, JFIF (.jpg)                                      |
+|                | -   JPEG2000 (.jp2,.j2k)                                  |
++----------------+-----------------------------------------------------------+
+| Vector         | -   AutoCAD (.dwg)                                        |
+|                | -   MapInfo TAB Format - \*TAB, \*.DATA, ID and MAP files |
+|                | -   Keyhole Markup Language (.KML)                        |
+|                | -   ESRI Shapefile (.shp), Shapefile (.shp)               |
++----------------+-----------------------------------------------------------+
+
+::: callout-important
+## Important Note:
+
+KML is a file that can be created, visualized, and edited using Google Earth application. SHP is the standard format for vector files and can be opened and read by almost any GIS software.
+:::
+
+### Examples of Vector and Raster
+
+Below are some of the examples of vector and raster data. Note that this is not a comprehensive list.
+
++---------------+-----------------------------+------------------------------------+
+| Data Model    | Examples                    | Sample Products                    |
++===============+=============================+====================================+
+| Raster        | -   Satallite Images        | -   Landsat 4,5,7,7 (30m)          |
+|               |                             | -   IKONOS images (2m)             |
+|               | -   Scanned maps            | -   NAMRIA                         |
+|               |                             | -   Arial Capture from Drone       |
+|               | -   Arial Photograp         |                                    |
+|               |                             |                                    |
+|               | -   Digital elevation model |                                    |
+|               |                             |                                    |
+|               | -   Digital Terrain Model   |                                    |
+|               |                             |                                    |
+|               | -   Digital Surface Model   |                                    |
++---------------+-----------------------------+------------------------------------+
+| Vector        | -   Shapefiles              | -   Downloadable SHP from gadm.org |
+|               |                             | -   Google earth file              |
+|               | -   KML                     | -   Schetch plans                  |
+|               |                             |                                    |
+|               | -   AutoCAD (DWG)           |                                    |
++---------------+-----------------------------+------------------------------------+
+
+: Examples of Vector and Raster
+
+### Attributes
+
+Every data, especially vector data, has an associated attribute table that holds information about that data. These could most easily be understood if the data is considered as a spreadsheet with one row per feature and one column.
+
+::: callout-tip
+## Important Tips:
+
+-   Columns are also called **Fields**
+
+-   Rows are also called **Data/Records**
+:::
+
+Vector data is usually linked with attributes, which can be modified by adding or removing fields, requiring the definition of their data type. The attribute's type will vary depending on the values expected to be stored in the cells of that field.
+
+Rows are added when a feature or polygon is drawn from the QGIS map area.
+
+![Attribute Table](Pictures/Attribute%20Table.png)
+
+{{< pagebreak >}}
+
+### Coordinate Reference System (CRS)
+
+Do you still remember the Cartesian Coordinate System? This system allows us to locate the position of any point in space relative to an origin, which is the intersection of two perpendicular lines.
+
+![Sample of point plotting on a cartesian plane @Russell](images/cartisian.png){width="276"}
+
+::: callout-tip
+## Important Tips:
+
+The principles of the Cartesian Coordinate System is the same principle used in locating places on earth.
+:::
+
+Any point on earth's surface can be represented by longitude and latitude instead of **X** and **Y** axes. The longtitude and latitude divided the earth vertically and horizontally in such a way that any given point could be NorthSouth or WestEast. Any point is relative to the Longtitude-Latitude intersection, which is the zero-degree Longtitude (**Prime Meridian)** and zero-degree Latitude (Equator).
+
+### Types of Coordinate Reference Systems (CRS)
+
+There are two most commonly used coordinated reference systems in GIS. The Geographic Coordinate Systems (GCS) and the Projected coordinate systems (PCS). These two CRS display GIS data differently on a computer.
+
+![GCS vs PCS @Buttery](images/crs.png){fig-align="center" width="617"}
+
+{{< pagebreak >}}
+
+The CRS, or Coordinate Reference System, is responsible for determining the units of measurement in a map, whether it's angular or linear. It also impacts the ability of map layers to overlay with one another. As a general rule, all data sets should have the same CRS to ensure proper alignment of the layers.
+
+### **The Geographic Coordinate Systems (GCS)**
+
+The GCS uses the longitude latitude system and uses three-dimensional spherical surface to find locations and points since positions are based on angular distances everything is measured in degree units.
+
+A location on Earth is defined by its coordinates, known as longitude and latitude. These coordinates are angles that originate from the Earth’s center and extend to a specific point on the planet’s surface. Typically, these angles are quantified in degrees or grads.
+
+![An illustration showing the world as a globe with longitude and latitude values](images/clipboard-52633125.png){fig-align="center"}
+
+Within the spherical coordinate system, the horizontal or east-west running lines represent parallels, which are lines of constant latitude. Conversely, the vertical or north-south running lines signify meridians, which are lines of constant longitude. Together, these lines wrap around the Earth, creating a grid-like pattern known as a graticule.
+
+The equator is the central line of latitude, equidistant from both poles, and is designated as the zero latitude line. The prime meridian, which is the zero longitude line, typically runs through Greenwich, England in most Geographic Coordinate Systems (GCSs). The point where the equator and the prime meridian intersect is known as the graticule’s origin, with coordinates (0,0).
+
+Latitude and longitude coordinates are conventionally expressed in decimal degrees or as degrees, minutes, and seconds (DMS). Latitudes are gauged from the equator, extending from -90° at the South Pole to +90° at the North Pole. Longitudes, on the other hand, are gauged from the prime meridian, spanning from -180° westward to 180° eastward. For instance, given that the prime meridian crosses Greenwich, England, Australia’s position—south of the equator and east of Greenwich—results in positive longitude and negative latitude values.
+
+Thinking of longitude as the ‘x’ value and latitude as the ‘y’ can be useful. When data is plotted on a geographic coordinate system, it’s treated as though each degree is a fixed unit of measurement, akin to the Plate Carrée projection. It’s important to note that a single physical location may be represented by different coordinate values across various geographic coordinate systems.
+
+::: callout-note
+## Important Tips
+
+There are at least three ways to express GCS:
+
+-   Degrees-Minutes-Seconds
+
+-   Decimal minutes
+
+-   Decimal degrees
+:::
+
+### Projected Coordinate Systems
+
+A **Projected Coordinate System (PCS)** is established on a plane, which is a flat, two-dimensional surface. In contrast to a **Geographic Coordinate System (GCS)**, a PCS maintains consistent lengths, angles, and areas throughout its two dimensions. A PCS invariably relies on an underlying GCS, which itself is derived from a spherical or spheroidal shape. Beyond the GCS, a PCS encompasses a map projection, which is further tailored for specific locations through a collection of projection parameters, and it also specifies a linear unit for measurement.
+
+### Geographic (datum) transformations
+
+When dealing with two datasets that are aligned to different geographic coordinate systems, a geographic (datum) transformation may be necessary. This transformation is a precise mathematical process used to translate coordinates from one geographic coordinate system to another. Much like the coordinate systems themselves, there is an extensive array of predefined geographic transformations available for use. It’s crucial to apply the correct geographic transformation when required, as failure to do so can result in coordinates being misplaced by as much as several hundred meters. In cases where a direct transformation is not available, it may be necessary to employ an intermediary GCS, such as the World Geodetic System 1984 (WGS84), and perform a combination of two transformations.
+
+![Projected](images/clipboard-3509347157.png){fig-align="center"}
+
+**“Easting”** refers to the measure of how far east a point is from the origin within a coordinate system, quantified in the units of that system. It corresponds to the **x-value** in a rectangular coordinate system. **“Northing,”** on the other hand, denotes the measure of how far north a point is from the origin, also measured in the system’s units, aligning with the **y-value** in a rectangular coordinate system.
+
+The world is divided into **60 longitudinal projection zones**, which are sequentially numbered from **1 to 60**, beginning at **180°W**. Each zone spans **6 degrees** in width, with certain exceptions in regions like Norway and Svalbard where the zones differ in width.
+
+![The Universal Traverse Mercator World Map @Buttery](images/clipboard-533678345.png){fig-align="center"}
+
+**Comparison between PCS and GCS**
+
+A GCS is round, and so records locations in angular units (usually degrees). A PCS is flat, so it records locations in linear units (usually meters).
+
+![Comparison between PCS and GCS](images/clipboard-3601100940.png){fig-align="center"}
+
+Once your dataset is prepared to be depicted, it must determine the method of portrayal. The dilemma arises from the discrepancy between the spherical nature of the Earth’s surface—and consequently, your **Geographic Coordinate System (GCS)**—and the planar characteristics of your map and computer display. Transferring the Earth’s curvature onto a flat medium inevitably leads to distortion. It’s akin to attempting to flatten an orange peel on a table; it nearly works, but not without some tearing. This is where the utility of map projections is evident. They provide instructions on how to manipulate the Earth’s representation—how to strategically tear and stretch that orange peel—so that the most crucial aspects of your map suffer minimal distortion and are optimally represented on the map’s flat plane.
+
+{{< pagebreak >}}
+
+# MODULE 2: INTRODUCTION TO QGIS (Installation, User-Interface, and Plugins)
+
+### Objectives:
+
+This module enables the students to :
+
+1.  Have an overview on what is QGIS and ,
+
+2.  Familiarize its user interface.
+
+### Outcomes:
+
+After reading and following the steps and procedure in this module, the students should be able to:
+
+1.  Install QGIS in their computer successfully,
+
+2.  Familiarized its user interface, able to identify useful geoprocessing icons and,
+
+3.  Install plug-ins.
+
+{{< pagebreak >}}
+
+**Definition of terms**
+
+{{< pagebreak >}}
+
+## Overview of the QGIS Software
+
+### What is QGIS?
+
+QGIS is a sophisticated GIS application that not only stands on the shoulders of Free and Open Source Software (FOSS) but also takes pride in being part of the FOSS community.
+
+QGIS is an accessible and open-source Geographic Information System (GIS), licensed under the GNU General Public License. As an esteemed project of the Open Source Geo-spatial Foundation (OSGeo), it operates across various platforms including Linux, Unix, Mac OSX, Windows, and Android, and accommodates a wide array of vector, raster, and database formats and capabilities.
+
+### QGIS Applications
+
+QGIS is not only a desktop GIS. It can also be used for spatial file browser, a server application, and web applications. Below are some of the applications of QGIS.
+
++-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Application                 | Description                                                                                                                                                                                                                             |
++=============================+=========================================================================================================================================================================================================================================+
+| QGIS Desktop                | Create, edit, visualise, analyse and publish geospatial information.                                                                                                                                                                    |
+|                             |                                                                                                                                                                                                                                         |
+|                             | For Windows, Mac, Linux, BSD and Android.                                                                                                                                                                                               |
++-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QGIS Server                 | Publish QGIS projects and layers as OGC compatible WMS, WMTS, WFS and WCS services. Control which layers, attributes, layouts and coordinate systems are exported. QGIS server is considered as a reference implementation for WMS 1.3. |
++-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QGIS Web Client             | Publish QGIS projects on the web with ease. Benefit from the powerful symbology, labeling and blending features to impress with your maps.                                                                                              |
++-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QGIS on mobiles and tablets | The QGIS experience does not stop on the desktop. Various third-party touch optimized apps allow you to take QGIS into the field                                                                                                        |
++-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: QGIS Applications @qgisApplications
+
+### Software Installation
+
+The following steps shows you how to install QGIS into your computer. In order to install the QGIS software you need to download the software first.
+
+**Step 1.** In your internet browser type <https://qgis.org/en/site/index.html> in the search bar. The official website of QGIS will appear.
+
+![QGIS official Website](images/clipboard-1858100542.png){fig-align="center"}
+
+**Step 2.** In the web page, you can see two buttons the ![](images/clipboard-1395801283.png){width="68" height="16"} and ![](images/clipboard-3969769840.png){width="68" height="16"}. You can also observe that under the ![](images/clipboard-2291666506.png){width="68" height="17"} are two versions the Release Candidate (RC) and the Long term release (LTR). Click the ![](images/clipboard-2291666506.png){width="64" height="16"} to proceed to the download page.
+
+![](images/clipboard-2831037054.png){width="449"}
+
+{{< pagebreak>}}
+
+::: callout-tip
+**Release Candidate (RC)** is the latest version of QGIS that is being tested and can be used. The only disadvantage of this version is that it is prone to Bugs and frequent Crash. While **Long Term Release (LTR)** is usually older version of the software that is more stable that the release candidate.
+:::
+
+**Step 3.** The download page will appear showing a large download button. Click the ![](images/clipboard-1735610055.png){width="111" height="16"} link below the button since it is better to download the long term release version of the software.
+
+![](images/clipboard-4114477350.png)
+
+**Step 4.** A dialog box will appear asking you where to put the downloaded file. Choose a folder then click ![](images/clipboard-1243437957.png){width="68" height="20"} button to download the software. Wait until the software is downloaded. This may take some time depending on the size of the file being downloaded and how fast your internet connectivity.
+
+![](images/clipboard-1393592318.png)
+
+**Step 5.** Double click the file that you have downloaded and a dialog box will appear. Click ![](images/clipboard-3596519019.png){width="68" height="22"} and another dialog box will appear. Just click ![](images/clipboard-1523705276.png){width="68" height="19"} and tick the ![](images/clipboard-907523451.png){width="233"} lastly , hit ![](images/clipboard-2886290235.png). Wait Until the software is successfully installed.
+
+![](images/clipboard-3962353116.png){width="333"}
+
+![](images/clipboard-2177331036.png){width="335"}
+
+### QGIS Graphical User Interface (GUI)
+
+After installing the software, click the windows icon ( ![](images/clipboard-3229500925.png){width="17"} windows icon) and look for the recently installed application or type QGIS Desktop 3.34.8 on search bar (![](images/clipboard-645037302.png){width="173" height="28"} search bar ).
+
+**Step 1.** Click ![](images/clipboard-1333348490.png){width="123"} to open the software. The QGIS interface will show up showing your recent project if you have already used it but usually this will be blank if you are using it for the first time.
+
+![QGIS user interface](images/Screenshot%202024-07-07%20210344.png){width="561"}
+
+**Step 2.** Press **`Ctrl + N`** to start a new project or Click the ![](images/clipboard-4226328116.png) ![](images/clipboard-1334164282.png) icon. A new untitled project was just created.
+
+![](images/Screenshot 2024-07-10 033251.jpg)
+
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Component                         | Description                                                                                                                                                          |
++===================================+======================================================================================================================================================================+
+| 1.   Menu Bar                     | The Menu bar provides access to QGIS functions using standard hierarchical menus.                                                                                    |
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2.   Toolbar                      | The toolbars provide access to most of the functions in the menus, plus additional tools for interacting with the map.                                               |
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 3.   Panels                       | QGIS provides many panels. Panels are special widgets that you can interact with (selecting options, checking boxes, filling values…) to perform more complex tasks. |
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 4.  Map View                      | The map view provide visualization of the layers being loaded into the QGIS.                                                                                         |
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 5.  Status Bar                    | The status bar provides you with general information about the map view and processed or available actions, and offers you tools to manage the map view.             |
++-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: QGIS GUI Components and their description
+
+A more detailed information on each of the component can be access from the official website of [QGIS.](https://docs.qgis.org/3.34/en/docs/user_manual/introduction/qgis_gui.html#)
+
+# MODULE 3:  LOADING DIFFERENT DATA MODELS INTO QGIS
+
+### Objectives:
+
+This Module enables the students to:
+
+1.   Differentiate different data models,
+
+2.   Load different data into QGIS.
+
+### Outcomes:
+
+After reading and following the steps and procedure in this module, the students should be able to:
+
+1.   Gain knowledge about the different data models,
+
+2.  Confidently load different data models into QGIS.
+
+## Loading  Vector Layers
+
+The data to be use for this exercise can be downloaded [here](https://drive.google.com/drive/folders/15k58nhDnTo8yu-jBT9v4gbH_6GIxsViY?usp=sharing).
+
+### Loading a . csv file
+
+A .csv file stands for **comma-separated values** file. It's a simple and widely used format for storing tabular data in plain text. Each piece of data in the file is separated by a comma (,). This makes it easy for computer programs to read and understand the data.
+
+The following steps will guide you on how to load .csv files into QGIS.
+
+**Step 1.** Open you QGIS software and on the `Manage layers Toolbars` Click ![](images/clipboard-145553620.png) Add delimited text icon or Press `CTRL + SHIFT + T`.
+
+![](images/clipboard-2494265405.png)
+
+**Step 2.** On the right of the `File name` textbox there is a button with three dots, Click ![](images/clipboard-4040124874.png) to browse for the location of your .csv file.
+
+![](images/clipboard-3448995069.png)
+
+**Step 3.** In your Mapping data set folder, Left Click on `Site Coodrinate1` and click `Open.` Your .csv file data will be loaded.
+
+![](images/clipboard-4243377563.png)
+
+::: callout-note
+Your X and Y fields will automatically load the longitude and latitude data from your csv file. But there are instances that it does not load properly. You need to set it manually.
+:::
+
+**Step 4.** Since your data is in Degrees Minutes Seconds, this will give you a hint that your csv file CRS is Geographic Coordinate format. Under the X and Y field check the ![](images/clipboard-3216887613.png) and Set the `Geometry CRS` to `EPSG: 4326-WGS 84` .
+
+![](images/clipboard-1672848513.png)
+
+::: callout-caution
+Your `Geometry CRS` should be the same as your Project CRS to display the data properly.
+
+![](images/clipboard-1672848513.png)
+
+![](images/clipboard-2538007078.png)
+:::
+
+**Step 5.** Click ![](images/clipboard-4248020980.png) button and hit ![](images/clipboard-3903698265.png). Your csv data should be loaded as points in the Map frame and will appear on the Layers Panel.
+
+![](images/clipboard-261373783.png)
+
+### Loading a shapefile
+
+A we have discuss in the previous module, shapefile is not a single file but rather composed of a group of files sharing the same name but with different file extensions.
+
+The following steps will show you how to load shapefiles into QGIS.
+
+**Step 1.** In the `Manage layer toolbar`, Click ![](images/clipboard-462579616.png) add vector layer icon or press `CTRL + SHIFT + V` and
+
+a dialog box will appear.
+
+![](images/clipboard-2722997328.png)
+
+**Step 2.** Click the ![](images/clipboard-4201397893.png) browse button to look for your mapping data set folder.
+
+![](images/clipboard-3665316965.png)
+
+**Step 3.** In your data set, Click `River lines.shp` only and hit `Open.`
+
+![](images/clipboard-3965750980.png)
+
+**Step 4.** After loading your shapefile hit ![](images/clipboard-1038718991.png) then ![](images/clipboard-3244265577.png) the dialog box. Your `River lines` Will now be added to the `Layers Pannel.`
+
+![](images/clipboard-169011094.png)
+
+### Loading Raster data
+
+One of the most common raster data being use for geospatial analysis is the Digital Elevation Model (DEM). A digital elevation model (DEM) is essentially a 3D computer representation of Earth's (or any celestial body's) surface, focusing on elevation.
+
+The following steps will guide you on how to load raster specifically DEM to QGIS.
+
+**Step 1.** In the `Manage Layers Toolbar` Click the ![](images/clipboard-3882131285.png) add raster icon or press `CTRL + SHIFT + R`.
+
+![](images/clipboard-3463207333.png)
+
+**Step 2.** Click the ![](images/clipboard-1271662103.png) browse button, and select and open the e the `DEM.tif` file.
+
+![](images/clipboard-2015866256.png)
+
+Step 3. Hit ![](images/clipboard-4159016390.png) then ![](images/clipboard-3739708011.png) the dialog box. Your DEM data is now loaded in the layers panel and in the map frame.
+
+![](images/clipboard-3702934924.png)
+
+# MODULE 4: VECTOR ANALYSIS (Buffer, Clip & Intersection)
+
+### Objectives:
+
+This module enables the students to :
+
+1.  Understand vector analysis using the QGIS geoprocessing tools.
+
+2.  Perform Vector analysis using geoprocesing tools.
+
+### Outcomes:
+
+After reading and following the steps and procedure in this module, the students should be able to:
+
+1.  Create a buffer zone,
+
+2.  Clip a River lines with Municipal boundary and;
+
+3.  Intersect Raininduce landslide with Municipal boundary.
+
+### Buffer
+
+In this exercise, we will learn how to use the buffer tool in QGIS.
+
+When **buffering**, two areas are created: a **buffer zone** within a specified distance to selected real-world features and an **area beyond it**.
+
+A **buffer zone** is a designated area that exists to maintain distance between different real-world features. These zones can serve a variety of purposes, such as protecting the environment, shielding residential and commercial areas from industrial accidents or natural disasters, or preventing violence. Examples of buffer zones include greenbelts that separate residential and commercial areas, border zones between countries, noise protection zones around airports, and pollution protection zones along rivers.
+
+Suppose we are tasked to evaluate an existing sanitary landfill and below is a table showing some of the criteria for evaluation based on [DAO 1998-50](https://www.bing.com/ck/a?!&&p=32ad13002047ffbfJmltdHM9MTcwNDY3MjAwMCZpZ3VpZD0xYTBkOTFhMi1hYzlhLTY3NjMtMjNhMy04MmI2YWQ4ZTY2ZWQmaW5zaWQ9NTI0Mw&ptn=3&ver=2&hsh=3&fclid=1a0d91a2-ac9a-6763-23a3-82b6ad8e66ed&psq=guidelines+for+sanitary+landfill+operation&u=a1aHR0cHM6Ly9lbWIuZ292LnBoL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE1LzEyL0RBTy0xOTk4LTUwLnBkZg&ntb=F). We only take two example criteria to show how the buffer tool is used for the evaluation of landfill site identification and screening criteria for municipal solid waste disposal facilities.
+
+**Some definition of terms**
+
+***Absolute criteria*** - this sets the minimum requirement(s) that a site must meet for it to be considered.
+
+**Conditional criteria** - this indicates that a certain site has met the absolute Conditions/requirements but is still subject to or dependent upon certain additional conditions that can Enhance the site selection process but are not exclusionary.
+
+![](images/clipboard-351452462.png)
+
+As we can see on the first criteria, we need to locate the proposed residential, commercial, or urban development areas, and areas with archeological, cultural, and historical areas. On the second criterion, we need to locate surface waters used for drinking purposes and perennial rivers or streams and of course the location of the existing sanitary landfill. We can obtain these data by [digitizing](https://drive.google.com/file/d/1lhZH8RROZ4VhU4HPD1I4vrHvgliCXoHN/view?usp=sharing) the map.
+
+We will also assume that you have already finished digitizing so that we can now proceed to the validation process using the buffer tool. Download the needed data [here](https://drive.google.com/drive/folders/1bl5hdJpI2Z9-FB0w6hHxVIPPw2bp3OFW?usp=sharing).
+
+After loading the data within QGIS, we are now ready to evaluate the given criteria. The first criterion says that the landfill should not be located in the proximity of sensitive land users. We can see on the map that the sanitary landfill is situated where there are no built-up areas thus meeting the minimum requirements. However, the conditional states that it should not be within 250 meters of residential and 1 kilometer of memorial sites, churches, schools, and historical sites. To validate this, we will create a 1-kilometer radius buffer zone within the sanitary landfill to see whether there are built-up areas affected.
+
+To create a buffer, follow these steps.
+
+**Step 1.** In the menu bar, select `Vector ---> Geoprocessing tools ---> Buffer.`
+
+![](images/clipboard-587342247.png)
+
+Step 2. A dialog will appear showing the parameters need to perform the operation.
+
+![](images/clipboard-1500670733.png)
+
+**Step 3.** On the dialog box, select "Sanitary Landfill" as the Input *Layer*. On the *Distance* change the meters into *Kilometers* and the distance value to 1. Leave other values the same and click **Run**.
+
+![](images/clipboard-1182246697.png)
+
+**Step 4.** A circle will appear around the sanitary landfill. Change the symbology of the buffer zone. Make the fill color to transparent and change the border color into red then increase the stroke width to 0.460000 Click **OK**.
+
+![](images/clipboard-474177572.png)
+
+**Step 5.** The result shows that there were no built-up areas within the 1-kilometer buffer zone. This means that it passed the first given criteria.
+
+![](images/clipboard-108232627.png)
+
+### Clip
+
+{{< pagebreak >}}
+
+## References
